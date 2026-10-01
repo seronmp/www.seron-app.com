@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGB - Seron App</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+<!-- Header con Logo e Selettore Lingua -->
+    <header class="bg-slate-900 text-white py-8 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            
+            <!-- Logo e Titolo -->
+            <div class="flex flex-col items-center md:items-start">
+                <div class="flex items-center gap-3">
+                    <img src="logo.png" alt="Seron Logo" class="h-10 w-auto object-contain">
+                    <h1 class="text-3xl font-black tracking-tight"><a href="index-de.html">SERON APP</a></h1>
+                </div>
+                <p class="text-slate-400 mt-1">Managementsysteme und Automatisierung für Unternehmen</p>
+            </div>
+
+            <!-- Selettore Lingua -->
+            <div class="mt-6 md:mt-0 flex items-center space-x-3 text-sm font-bold bg-slate-800 px-4 py-2 rounded-lg border border-slate-700 shadow-inner">
+                <a href="index.html" class="text-slate-400 hover:text-white transition">IT</a>
+                <span class="text-slate-500">|</span>
+                <a href="index-de.html" class="text-white cursor-default">DE</a>
+            </div>
+
+        </div>
+    </header>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
     <header class="bg-slate-900 text-white py-8 shadow-md">
