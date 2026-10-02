@@ -27,16 +27,20 @@
 </head>
 <body class="text-gray-800 font-sans flex flex-col min-h-screen antialiased relative z-0">
 
-    <!-- SFONDO TECH (Griglia da sviluppo + Luce Radiale Brand) -->
-    <div class="fixed inset-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(59,32,75,0.15),rgba(255,255,255,0))]"></div>
-    <div class="fixed inset-0 z-[-1] h-screen w-screen bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+    <!-- SFONDO MODERNO (Sfumature morbide e Bagliore) -->
+    <div class="fixed inset-0 z-[-2] bg-gradient-to-br from-slate-50 via-white to-[#f5f0f6]"></div>
+    <!-- Bagliore (Glow) superiore centrato -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand/10 blur-[100px] rounded-full pointer-events-none z-[-1]"></div>
 
     <!-- Header Corporate Seron -->
-    <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <header class="bg-white/70 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             
             <div class="flex items-center gap-4">
-                <img src="logo.png" alt="Seron Logo" class="h-12 w-auto object-contain">
+                <!-- LOGO CLICCABILE: Rimanda alla Home -->
+                <a href="index.html" class="hover:opacity-80 transition duration-300">
+                    <img src="logo.png" alt="Seron Logo" class="h-12 w-auto object-contain">
+                </a>
                 <div class="border-l border-gray-300 pl-4 hidden md:block">
                     <p class="text-sm font-semibold text-gray-500 tracking-wide uppercase">Software Solutions</p>
                 </div>
@@ -61,9 +65,9 @@
     <!-- Main Content (Scheda Fluttuante) -->
     <main class="flex-grow max-w-4xl mx-auto px-4 py-12 w-full">
         
-        <div class="bg-white/90 backdrop-blur-xl p-8 md:p-12 rounded-3xl shadow-xl shadow-brand/5 border border-white/50">
+        <div class="bg-white/80 backdrop-blur-xl p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white">
             <!-- Titolo Principale in colore Brand -->
-            <div class="mb-10 border-b border-gray-200 pb-8 text-center md:text-left">
+            <div class="mb-10 border-b border-gray-100 pb-8 text-center md:text-left">
                 <div class="inline-flex items-center justify-center space-x-2 bg-brand/10 text-brand px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     <span>Documento Legale</span>
