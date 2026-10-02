@@ -1,126 +1,125 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
-        <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seron App - Softwarelösungen</title>
-    <!-- Questo script è fondamentale per la grafica Tailwind -->
+    <title>Privacy Policy - Seron App</title>
+    <!-- Motore Grafico -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Stile personalizzato per un'animazione di entrata fluida -->
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
 </head>
-    <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
-        
-<!-- Header con Logo e Selettore Lingua -->
-    <header class="bg-slate-900 text-white py-8 shadow-md">
+<body class="bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 text-slate-800 font-sans flex flex-col min-h-screen selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header Elegante -->
+    <header class="bg-slate-900 text-white py-6 shadow-lg border-b border-slate-800 sticky top-0 z-50">
         <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             
-            <!-- Logo e Titolo -->
             <div class="flex flex-col items-center md:items-start">
                 <div class="flex items-center gap-3">
-                    <img src="logo.png" alt="Seron Logo" class="h-10 w-auto object-contain">
-                    <h1 class="text-3xl font-black tracking-tight"><a href="index.html">SERON APP</a></h1>
+                    <img src="logo.png" alt="Seron Logo" class="h-10 w-auto object-contain drop-shadow-md">
+                    <h1 class="text-3xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+                        <a href="index.html" class="hover:opacity-80 transition">SERON APP</a>
+                    </h1>
                 </div>
-                <p class="text-slate-400 mt-1">Sistemi gestionali e automazione per il business</p>
             </div>
 
-            <!-- Selettore Lingua -->
-            <div class="mt-6 md:mt-0 flex items-center space-x-3 text-sm font-bold bg-slate-800 px-4 py-2 rounded-lg border border-slate-700 shadow-inner">
-                <a href="index.html" class="text-white cursor-default">IT</a>
-                <span class="text-slate-500">|</span>
-                <a href="index-de.html" class="text-slate-400 hover:text-white transition">DE</a>
-            </div>
-
-        </div>
-    </header>
-
-
-    <!-- Header -->
-    <header class="bg-slate-900 text-white py-8 shadow-md">
-        <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <div>
-                <h1 class="text-3xl font-black tracking-tight"><a href="index.html">SERON APP</a></h1>
-                <p class="text-slate-400 mt-1">Sistemi gestionali e automazione per il business</p>
-            </div>
-            <a href="index.html" class="mt-4 md:mt-0 text-sm font-semibold text-slate-300 hover:text-white transition flex items-center bg-slate-800 px-4 py-2 rounded-lg hover:bg-slate-700">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                Torna alla Home
-            </a>
-        </div>
-    </header>
-
-    <!-- Main Content (Privacy Policy) -->
-    <main class="flex-grow max-w-4xl mx-auto px-4 py-16 w-full">
-        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-slate-100">
-            
-            <div class="mb-10 border-b border-slate-100 pb-6">
-                <h2 class="text-3xl font-black text-slate-800">Privacy Policy</h2>
-                <p class="text-slate-500 mt-2 font-medium">Informativa sul trattamento dei dati personali ai sensi dell'Art. 13 del Regolamento (UE) 2016/679 (GDPR).</p>
-            </div>
-
-            <div class="space-y-8 text-slate-600 leading-relaxed">
+            <!-- Bottoni Navigazione e Lingua -->
+            <div class="mt-5 md:mt-0 flex items-center space-x-6">
+                <a href="index.html" class="text-sm font-semibold text-slate-300 hover:text-white transition flex items-center group">
+                    <svg class="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Home
+                </a>
                 
-                <section>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">1. Titolare del Trattamento</h3>
-                    <p>Il Titolare del trattamento dei dati è <strong>Seron S.r.l.</strong>, con sede legale a Malles Venosta (BZ), [Via Glorenza 20], P. IVA [03215630215].<br>
-                    Indirizzo email di contatto del Titolare: <a href="mailto:info@seron.one" class="text-indigo-600 hover:underline">info@seron.one</a></p>
+                <div class="flex items-center space-x-3 text-sm font-bold bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 shadow-inner">
+                    <a href="#" class="text-white cursor-default">IT</a>
+                    <span class="text-slate-600">|</span>
+                    <a href="datenschutz.html" class="text-slate-400 hover:text-white transition">DE</a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Main Content (Design a "Carta Sospesa") -->
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-16 w-full animate-fade-in">
+        <div class="bg-white p-8 md:p-14 rounded-3xl shadow-2xl shadow-slate-200/50 border border-white relative overflow-hidden">
+            
+            <!-- Striscia decorativa superiore -->
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500"></div>
+            
+            <div class="mb-12 border-b border-slate-100 pb-8 text-center md:text-left">
+                <div class="inline-block bg-indigo-50 text-indigo-600 font-bold px-3 py-1 rounded-full text-xs mb-4 tracking-wide uppercase">Documento Legale</div>
+                <h2 class="text-4xl font-black text-slate-900 tracking-tight">Privacy Policy</h2>
+                <p class="text-slate-500 mt-3 text-lg font-medium leading-relaxed">Informativa sul trattamento dei dati personali ai sensi dell'Art. 13 del Regolamento (UE) 2016/679 (GDPR).</p>
+            </div>
+
+            <div class="space-y-10 text-slate-600 leading-relaxed text-base">
+                
+                <section class="group">
+                    <h3 class="text-xl font-extrabold text-slate-800 mb-3 flex items-center">
+                        <span class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center mr-3 text-sm group-hover:bg-indigo-100 group-hover:text-indigo-600 transition">1</span>
+                        Titolare del Trattamento
+                    </h3>
+                    <p class="pl-11">Il Titolare del trattamento dei dati è <strong class="text-slate-800">Seron S.r.l.</strong>, con sede legale a Malles Venosta (BZ), [Inserire Indirizzo Completo], P. IVA 03215630215.<br>
+                    Email: <a href="mailto:info@seron-app.com" class="text-indigo-600 font-semibold hover:text-indigo-800 transition">info@seron-app.com</a></p>
                 </section>
 
-                <section>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">2. Tipologia di dati raccolti</h3>
-                    <p>Il presente sito web (seron-app.com) funge da vetrina per i software sviluppati da Seron S.r.l. Durante la navigazione, raccogliamo le seguenti categorie di dati:</p>
-                    <ul class="list-disc pl-5 mt-2 space-y-1">
-                        <li><strong>Dati di navigazione:</strong> I sistemi informatici preposti al funzionamento del sito acquisiscono alcuni dati personali la cui trasmissione è implicita nell'uso dei protocolli di comunicazione di Internet (es. indirizzi IP, orari di richiesta).</li>
-                        <li><strong>Dati forniti volontariamente:</strong> Qualora l'utente contatti Seron S.r.l. tramite gli indirizzi email indicati, acquisiremo l'indirizzo del mittente per poter rispondere alle richieste.</li>
+                <section class="group">
+                    <h3 class="text-xl font-extrabold text-slate-800 mb-3 flex items-center">
+                        <span class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center mr-3 text-sm group-hover:bg-indigo-100 group-hover:text-indigo-600 transition">2</span>
+                        Tipologia di dati raccolti
+                    </h3>
+                    <p class="pl-11">Il sito web (seron-app.com) funge da vetrina per i software sviluppati da Seron S.r.l. Raccogliamo:</p>
+                    <ul class="list-none pl-11 mt-3 space-y-3">
+                        <li class="relative before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-indigo-500 before:rounded-full pl-5">
+                            <strong class="text-slate-800">Dati di navigazione:</strong> Acquisiti implicitamente nell'uso dei protocolli Internet (es. indirizzi IP, orari).
+                        </li>
+                        <li class="relative before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-indigo-500 before:rounded-full pl-5">
+                            <strong class="text-slate-800">Dati forniti volontariamente:</strong> Email del mittente per richieste di contatto.
+                        </li>
                     </ul>
-                    <p class="mt-2 text-sm text-slate-500 italic">Nota: Per l'uso specifico delle singole applicazioni software (es. Restabook), si rimanda alle rispettive privacy policy interne alle app, che gestiscono i dati operativi e le anagrafiche.</p>
                 </section>
 
-                <section>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">3. Finalità del Trattamento e Base Giuridica</h3>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li><strong>Garantire il funzionamento del sito:</strong> Base giuridica: <em>Legittimo interesse</em> (Art. 6, lett. f, GDPR) a mantenere il sito sicuro e funzionante.</li>
-                        <li><strong>Rispondere a richieste di contatto:</strong> Base giuridica: <em>Esecuzione di misure precontrattuali</em> (Art. 6, lett. b, GDPR).</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">4. Modalità di Trattamento e Conservazione</h3>
-                    <p>Il trattamento è effettuato mediante strumenti informatici con logiche strettamente correlate alle finalità indicate e in modo da garantire la sicurezza. Il sito è ospitato su infrastruttura Cloudflare, che garantisce alti standard di sicurezza e operatività nel rispetto del GDPR.<br>
-                    I dati di navigazione vengono cancellati subito dopo l'elaborazione statistica. I dati forniti per richieste di contatto verranno conservati per il tempo strettamente necessario a evadere la richiesta.</p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">5. Condivisione dei Dati</h3>
-                    <p>I dati non saranno diffusi o venduti a terzi. Possono essere condivisi solo con soggetti che agiscono in qualità di Responsabili del Trattamento (es. hosting provider come Cloudflare o Vercel) o ad Autorità cui sia obbligatorio comunicarli per legge.</p>
-                </section>
-
-                <section>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">6. Diritti dell'Interessato</h3>
-                    <p>Ai sensi degli artt. 15 e ss. del GDPR, l'utente ha il diritto di chiedere al Titolare l'accesso ai propri dati, la rettifica, la cancellazione, limitarne o opporsi al trattamento, e richiederne la portabilità. Le richieste vanno rivolte in forma scritta all'indirizzo email indicato al punto 1.</p>
+                <section class="group">
+                    <h3 class="text-xl font-extrabold text-slate-800 mb-3 flex items-center">
+                        <span class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center mr-3 text-sm group-hover:bg-indigo-100 group-hover:text-indigo-600 transition">3</span>
+                        Modalità e Sicurezza
+                    </h3>
+                    <p class="pl-11">Il trattamento è effettuato mediante strumenti informatici in modo da garantire sicurezza e riservatezza. Il sito è ospitato su infrastruttura Cloudflare, garantendo standard Enterprise nel rispetto del GDPR.</p>
                 </section>
 
             </div>
         </div>
     </main>
 
-    <!-- Footer Aziendale e Documenti -->
-    <footer class="bg-slate-100 border-t border-slate-200 py-10 text-center text-sm text-slate-600">
-        <div class="max-w-5xl mx-auto px-4 flex flex-col items-center space-y-4">
+    <!-- Footer Moderno -->
+    <footer class="bg-slate-900 border-t border-slate-800 pt-12 pb-8 text-center text-sm text-slate-400">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col items-center space-y-6">
             <div>
-                <p class="font-bold text-slate-800 text-base mb-1">Seron S.r.l.</p>
+                <img src="logo.png" alt="Seron Logo" class="h-8 mx-auto mb-4 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                <p class="font-bold text-white text-base mb-1">Seron S.r.l.</p>
                 <p>Malles Venosta, Alto Adige - Italia</p>
-                <p>P.IVA: [Inserire P.IVA] | REA: BZ-[241706]</p>
+                <p>P.IVA: 03215630215 | REA: BZ-241706</p>
             </div>
             
-           <div class="flex space-x-4 pt-2">
-    <a href="privacy.html" class="hover:text-indigo-600 font-medium transition">Privacy Policy</a>
-    <span class="text-slate-300">|</span>
-    <a href="termini.html" class="hover:text-indigo-600 font-medium transition">Termini di Servizio</a>
-    <span class="text-slate-300">|</span>
-    <a href="impressum.html" class="hover:text-indigo-600 font-medium transition">Colophon (Impressum)</a>
-</div>
+            <div class="flex space-x-6 pt-4">
+                <a href="privacy.html" class="text-indigo-400 font-bold">Privacy Policy</a>
+                <a href="termini.html" class="hover:text-white transition">Termini di Servizio</a>
+                <a href="impressum.html" class="hover:text-white transition">Colophon (Impressum)</a>
+            </div>
             
+            <div class="w-full max-w-md h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent my-4"></div>
             
-            <p class="text-xs text-slate-400 pt-4">&copy; 2026 Seron S.r.l. - Tutti i diritti riservati.</p>
+            <p class="text-xs">&copy; 2026 Seron S.r.l. - Tutti i diritti riservati.</p>
         </div>
     </footer>
 
