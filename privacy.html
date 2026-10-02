@@ -15,7 +15,7 @@
                 extend: {
                     colors: {
                         brand: '#3B204B',
-                        brandLight: '#f9f6fa' /* Sfondo leggerissimo in tinta */
+                        brandLight: '#f9f6fa'
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -25,10 +25,14 @@
         }
     </script>
 </head>
-<body class="bg-white text-gray-800 font-sans flex flex-col min-h-screen antialiased">
+<body class="text-gray-800 font-sans flex flex-col min-h-screen antialiased relative z-0">
+
+    <!-- SFONDO TECH (Griglia da sviluppo + Luce Radiale Brand) -->
+    <div class="fixed inset-0 z-[-2] h-screen w-screen bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(59,32,75,0.15),rgba(255,255,255,0))]"></div>
+    <div class="fixed inset-0 z-[-1] h-screen w-screen bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 
     <!-- Header Corporate Seron -->
-    <header class="bg-brandLight border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <header class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             
             <div class="flex items-center gap-4">
@@ -54,41 +58,61 @@
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Content (Scheda Fluttuante) -->
     <main class="flex-grow max-w-4xl mx-auto px-4 py-12 w-full">
-        <!-- Titolo Principale in colore Brand -->
-        <div class="mb-10 border-b-2 border-brand pb-6">
-            <h1 class="text-4xl font-black text-brand tracking-tight uppercase">Privacy Policy</h1>
-            <p class="text-gray-500 mt-2 text-lg font-medium">Informativa sul trattamento dei dati personali ai sensi dell'Art. 13 del Regolamento (UE) 2016/679 (GDPR).</p>
-        </div>
+        
+        <div class="bg-white/90 backdrop-blur-xl p-8 md:p-12 rounded-3xl shadow-xl shadow-brand/5 border border-white/50">
+            <!-- Titolo Principale in colore Brand -->
+            <div class="mb-10 border-b border-gray-200 pb-8 text-center md:text-left">
+                <div class="inline-flex items-center justify-center space-x-2 bg-brand/10 text-brand px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span>Documento Legale</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-black text-brand tracking-tight uppercase">Privacy Policy</h1>
+                <p class="text-gray-500 mt-4 text-lg font-medium">Informativa sul trattamento dei dati personali ai sensi dell'Art. 13 del Regolamento (UE) 2016/679 (GDPR).</p>
+            </div>
 
-        <div class="space-y-10 text-gray-700 leading-relaxed text-base">
-            
-            <section>
-                <h3 class="text-xl font-bold text-brand mb-3 uppercase tracking-wide">1. Titolare del Trattamento</h3>
-                <p>Il Titolare del trattamento dei dati è <strong>Seron S.r.l.</strong>, con sede legale a Malles Venosta (BZ), [Inserire Indirizzo Completo], P. IVA 03215630215.<br>
-                Email di contatto: <a href="mailto:info@seron-app.com" class="text-brand font-bold hover:underline transition">info@seron-app.com</a></p>
-            </section>
+            <div class="space-y-10 text-gray-700 leading-relaxed text-base">
+                
+                <section>
+                    <h3 class="text-xl font-bold text-brand mb-3 uppercase tracking-wide flex items-center">
+                        <span class="w-8 h-8 rounded bg-brand/10 text-brand flex items-center justify-center mr-3 text-sm">1</span>
+                        Titolare del Trattamento
+                    </h3>
+                    <p class="pl-11">Il Titolare del trattamento dei dati è <strong>Seron S.r.l.</strong>, con sede legale a Malles Venosta (BZ), [Inserire Indirizzo Completo], P. IVA 03215630215.<br>
+                    Email di contatto: <a href="mailto:info@seron-app.com" class="text-brand font-bold hover:underline transition">info@seron-app.com</a></p>
+                </section>
 
-            <section>
-                <h3 class="text-xl font-bold text-brand mb-3 uppercase tracking-wide">2. Tipologia di dati raccolti</h3>
-                <p>Il sito web funge da vetrina per i software sviluppati da Seron S.r.l. Durante la navigazione raccogliamo:</p>
-                <ul class="list-disc pl-5 mt-3 space-y-2">
-                    <li><strong>Dati di navigazione:</strong> I sistemi informatici preposti al funzionamento del sito acquisiscono alcuni dati (es. indirizzi IP, orari di richiesta).</li>
-                    <li><strong>Dati forniti volontariamente:</strong> Qualora l'utente ci contatti, acquisiremo l'indirizzo del mittente per poter rispondere alle richieste.</li>
-                </ul>
-            </section>
+                <section>
+                    <h3 class="text-xl font-bold text-brand mb-3 uppercase tracking-wide flex items-center">
+                        <span class="w-8 h-8 rounded bg-brand/10 text-brand flex items-center justify-center mr-3 text-sm">2</span>
+                        Tipologia di dati raccolti
+                    </h3>
+                    <p class="pl-11">Il sito web funge da vetrina per i software sviluppati da Seron S.r.l. Durante la navigazione raccogliamo:</p>
+                    <ul class="list-none pl-11 mt-3 space-y-3">
+                        <li class="relative before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand before:rounded-full pl-5">
+                            <strong>Dati di navigazione:</strong> I sistemi informatici preposti al funzionamento del sito acquisiscono alcuni dati (es. indirizzi IP, orari di richiesta).
+                        </li>
+                        <li class="relative before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:bg-brand before:rounded-full pl-5">
+                            <strong>Dati forniti volontariamente:</strong> Qualora l'utente ci contatti, acquisiremo l'indirizzo del mittente per poter rispondere alle richieste.
+                        </li>
+                    </ul>
+                </section>
 
-            <section>
-                <h3 class="text-xl font-bold text-brand mb-3 uppercase tracking-wide">3. Sicurezza e Hosting</h3>
-                <p>Il trattamento è effettuato mediante strumenti informatici avanzati. Il sito è ospitato su infrastruttura Cloudflare, che garantisce alti standard di sicurezza e operatività nel pieno rispetto del GDPR.</p>
-            </section>
+                <section>
+                    <h3 class="text-xl font-bold text-brand mb-3 uppercase tracking-wide flex items-center">
+                        <span class="w-8 h-8 rounded bg-brand/10 text-brand flex items-center justify-center mr-3 text-sm">3</span>
+                        Sicurezza e Hosting
+                    </h3>
+                    <p class="pl-11">Il trattamento è effettuato mediante strumenti informatici avanzati. Il sito è ospitato su infrastruttura Cloudflare, che garantisce alti standard di sicurezza e operatività nel pieno rispetto del GDPR.</p>
+                </section>
 
+            </div>
         </div>
     </main>
 
-    <!-- Footer Corporate TUTTO COLORATO BRAND -->
-    <footer class="bg-brand pt-12 pb-8 text-center text-sm text-gray-300">
+    <!-- Footer Corporate -->
+    <footer class="bg-brand pt-12 pb-8 text-center text-sm text-gray-300 relative z-10">
         <div class="max-w-6xl mx-auto px-4 flex flex-col items-center space-y-6">
             <div>
                 <p class="font-bold text-white text-lg tracking-wide uppercase mb-1">Seron S.r.l.</p>
