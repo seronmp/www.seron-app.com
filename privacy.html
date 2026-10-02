@@ -8,15 +8,14 @@
     <!-- Motore Grafico Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- CONFIGURAZIONE COLORI BRAND SERON.ONE -->
+    <!-- CONFIGURAZIONE COLORI BRAND SERON -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        /* SOSTITUISCI #0055FF CON IL COLORE ESATTO DEL TUO SITO SERON.ONE */
-                        brand: '#3B204B', 
-                        brandDark: '#1a1a1a'
+                        brand: '#3B204B',
+                        brandLight: '#f9f6fa' /* Sfondo leggerissimo in tinta */
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -28,8 +27,8 @@
 </head>
 <body class="bg-white text-gray-800 font-sans flex flex-col min-h-screen antialiased">
 
-    <!-- Header Corporate Seron.one -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <!-- Header Corporate Seron -->
+    <header class="bg-brandLight border-b border-gray-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             
             <div class="flex items-center gap-4">
@@ -45,7 +44,7 @@
                     Home
                 </a>
                 
-                <div class="flex items-center space-x-2 text-sm font-bold bg-gray-50 px-3 py-1.5 rounded border border-gray-200">
+                <div class="flex items-center space-x-2 text-sm font-bold bg-white px-3 py-1.5 rounded border border-gray-200 shadow-sm">
                     <a href="#" class="text-brand cursor-default">IT</a>
                     <span class="text-gray-300">|</span>
                     <a href="datenschutz.html" class="text-gray-500 hover:text-brand transition">DE</a>
@@ -55,23 +54,24 @@
         </div>
     </header>
 
-    <!-- Main Content (Stile Pulito / Documentale) -->
+    <!-- Main Content -->
     <main class="flex-grow max-w-4xl mx-auto px-4 py-12 w-full">
+        <!-- Titolo Principale in colore Brand -->
         <div class="mb-10 border-b-2 border-brand pb-6">
-            <h1 class="text-4xl font-black text-brandDark tracking-tight uppercase">Privacy Policy</h1>
+            <h1 class="text-4xl font-black text-brand tracking-tight uppercase">Privacy Policy</h1>
             <p class="text-gray-500 mt-2 text-lg font-medium">Informativa sul trattamento dei dati personali ai sensi dell'Art. 13 del Regolamento (UE) 2016/679 (GDPR).</p>
         </div>
 
         <div class="space-y-10 text-gray-700 leading-relaxed text-base">
             
             <section>
-                <h3 class="text-xl font-bold text-brandDark mb-3 uppercase tracking-wide">1. Titolare del Trattamento</h3>
+                <h3 class="text-xl font-bold text-brand mb-3 uppercase tracking-wide">1. Titolare del Trattamento</h3>
                 <p>Il Titolare del trattamento dei dati è <strong>Seron S.r.l.</strong>, con sede legale a Malles Venosta (BZ), [Inserire Indirizzo Completo], P. IVA 03215630215.<br>
                 Email di contatto: <a href="mailto:info@seron-app.com" class="text-brand font-bold hover:underline transition">info@seron-app.com</a></p>
             </section>
 
             <section>
-                <h3 class="text-xl font-bold text-brandDark mb-3 uppercase tracking-wide">2. Tipologia di dati raccolti</h3>
+                <h3 class="text-xl font-bold text-brand mb-3 uppercase tracking-wide">2. Tipologia di dati raccolti</h3>
                 <p>Il sito web funge da vetrina per i software sviluppati da Seron S.r.l. Durante la navigazione raccogliamo:</p>
                 <ul class="list-disc pl-5 mt-3 space-y-2">
                     <li><strong>Dati di navigazione:</strong> I sistemi informatici preposti al funzionamento del sito acquisiscono alcuni dati (es. indirizzi IP, orari di richiesta).</li>
@@ -80,15 +80,15 @@
             </section>
 
             <section>
-                <h3 class="text-xl font-bold text-brandDark mb-3 uppercase tracking-wide">3. Sicurezza e Hosting</h3>
+                <h3 class="text-xl font-bold text-brand mb-3 uppercase tracking-wide">3. Sicurezza e Hosting</h3>
                 <p>Il trattamento è effettuato mediante strumenti informatici avanzati. Il sito è ospitato su infrastruttura Cloudflare, che garantisce alti standard di sicurezza e operatività nel pieno rispetto del GDPR.</p>
             </section>
 
         </div>
     </main>
 
-    <!-- Footer Corporate -->
-    <footer class="bg-brandDark pt-12 pb-8 text-center text-sm text-gray-400">
+    <!-- Footer Corporate TUTTO COLORATO BRAND -->
+    <footer class="bg-brand pt-12 pb-8 text-center text-sm text-gray-300">
         <div class="max-w-6xl mx-auto px-4 flex flex-col items-center space-y-6">
             <div>
                 <p class="font-bold text-white text-lg tracking-wide uppercase mb-1">Seron S.r.l.</p>
@@ -97,14 +97,14 @@
             </div>
             
             <div class="flex space-x-6 pt-4">
-                <a href="privacy.html" class="text-brand font-bold">Privacy Policy</a>
+                <a href="privacy.html" class="text-white font-bold underline decoration-2 underline-offset-4">Privacy Policy</a>
                 <a href="termini.html" class="hover:text-white transition">Termini di Servizio</a>
                 <a href="impressum.html" class="hover:text-white transition">Colophon (Impressum)</a>
             </div>
             
-            <div class="w-full h-px bg-gray-800 my-4"></div>
+            <div class="w-full h-px bg-white/20 my-4"></div>
             
-            <p class="text-xs">&copy; 2026 Seron S.r.l. - Tutti i diritti riservati.</p>
+            <p class="text-xs text-white/50">&copy; 2026 Seron S.r.l. - Tutti i diritti riservati.</p>
         </div>
     </footer>
 
