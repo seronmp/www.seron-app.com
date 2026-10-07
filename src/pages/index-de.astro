@@ -2,9 +2,53 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Startseite">
-    <div class="text-center py-10 space-y-6">
-        <h1 class="text-4xl md:text-6xl font-black text-brand tracking-tight uppercase">Software Solutions</h1>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto font-medium">Moderne digitale Lösungen und Unternehmenssoftware von Seron GmbH.</p>
-    </div>
+<Layout title="Home - Seron GmbH.">
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-16 w-full box-border">
+        <div class="bg-white/70 backdrop-blur-xl p-8 md:p-14 rounded-3xl shadow-2xl shadow-brand/10 border border-white relative z-10">
+            
+            <!-- Intestazione -->
+            <div class="text-center py-10 space-y-6">
+                <h1 class="text-4xl md:text-6xl font-black text-brand tracking-tight uppercase">Software Solutions</h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto font-medium">Fortschrittliche digitale und Verwaltungslösungen für Unternehmen.</p>
+            </div>
+
+            <!-- Sezione Applicazioni -->
+            <div class="mt-16 w-full border-t border-gray-200/60 pt-12">
+                <h2 class="text-2xl md:text-3xl font-black text-brand uppercase text-center mb-10">Unser Apps</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    
+                    <!-- Card: Salon -->
+                    <a href="URL_DI_SALON" class="group bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-white/50 hover:shadow-brand/20 hover:-translate-y-1 transition duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-2 h-full bg-purple-400"></div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand transition">Salon</h3>
+                        <p class="text-gray-600 text-sm">Terminverwaltung und -organisation. Optimieren Sie Ihre Arbeitsabläufe mit unserer speziellen Lösung.</p>
+                    </a>
+
+                    <!-- Card: Tableator -->
+                    <a href="URL_DI_TABLEATOR" class="group bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-white/50 hover:shadow-brand/20 hover:-translate-y-1 transition duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-2 h-full bg-indigo-400"></div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand transition">Tableator</h3>
+                        <p class="text-gray-600 text-sm">Ein fortschrittliches Tool zur Bearbeitung und dynamischen Darstellung von Tischplänen für Restaurants und Pizzerien.</p>
+                    </a>
+
+                    <!-- Card: Zeitlr -->
+                    <a href="URL_DI_ZEITLR" class="group bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-white/50 hover:shadow-brand/20 hover:-translate-y-1 transition duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-2 h-full bg-orange-400"></div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand transition">Zeitlr</h3>
+                        <p class="text-gray-600 text-sm">Intelligentes System zur Zeiterfassung und Aufgabenverwaltung – einfach und intuitiv.</p>
+                    </a>
+
+                    <!-- Card: Calcolatore Acustico -->
+                    <a href="https://www.eurokustik.com" class="group bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-white/50 hover:shadow-brand/20 hover:-translate-y-1 transition duration-300 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-2 h-full bg-teal-400"></div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-brand transition">Calcolatore Acustico</h3>
+                        <p class="text-gray-600 text-sm">Interaktives Tool zur Berechnung der Nachhallzeit und zur Optimierung der Raumakustik.</p>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
 </Layout>
