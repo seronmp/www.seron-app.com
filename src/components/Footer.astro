@@ -1,5 +1,10 @@
 ---
+// Controlla il percorso attuale della pagina
+const currentPath = Astro.url.pathname;
+// Se il percorso contiene "-de", attiva la modalità in tedesco
+const isGerman = currentPath.includes('-de');
 ---
+
 <footer class="bg-brand pt-12 pb-8 text-center text-gray-300 relative z-10 mt-auto shadow-[0_-1px_3px_rgba(0,0,0,0.05)]">
     <div class="max-w-6xl mx-auto px-4 flex flex-col items-center space-y-6">
         <div class="text-center">
@@ -7,14 +12,25 @@
             <p class="text-xs">Malles Venosta, Alto Adige - Italia</p>
             <p class="text-xs">P.IVA: 03215630215 | REA: BZ-241706</p>
         </div>
+        
         <div class="flex flex-wrap justify-center gap-6 text-sm font-bold">
-            <a href="/privacy.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">Privacy Policy</a>
-            <a href="/termini.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">Termini di Servizio</a>
-            <a href="/agb.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">AGB</a>
-            <a href="/datenschutz.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">Datenschutz</a>
-            <a href="/impressum.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">Impressum (IT)</a>
-            <a href="/impressum-de.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">Impressum (DE)</a>
+            {isGerman ? (
+                <>
+                    <!-- Link per le pagine in Tedesco -->
+                    <a href="/agb.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">AGB</a>
+                    <a href="/datenschutz.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">Datenschutz</a>
+                    <a href="/impressum-de.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">Impressum</a>
+                </>
+            ) : (
+                <>
+                    <!-- Link per le pagine in Italiano -->
+                    <a href="/privacy.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">Privacy Policy</a>
+                    <a href="/termini.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">Termini di Servizio</a>
+                    <a href="/impressum.html" class="text-white hover:text-brand transition underline decoration-2 underline-offset-4">Impressum</a>
+                </>
+            )}
         </div>
+
         <div class="w-full t-px bg-white/10 my-4"></div>
         <p class="text-xs text-white/50">&copy; 2026 Seron S.r.l. - Tutti i diritti riservati.</p>
     </div>

@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Tableator - Seron S.r.l.">
+  <!-- Pulsanti per cambio lingua (in alto a destra) -->
+  <div class="fixed top-24 right-4 md:right-10 z-50 flex gap-2">
+    <button id="lang-it" class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-500 transition font-bold border border-white/20">IT</button>
+    <button id="lang-de" class="bg-gray-800/80 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 transition font-bold border border-white/20">DE</button>
+  </div>
+
+  <main class="flex-grow max-w-5xl mx-auto px-4 py-16 w-full box-border">
+    <div class="bg-white/80 backdrop-blur-xl p-8 md:p-14 rounded-3xl shadow-2xl shadow-indigo-500/10 border border-white relative overflow-hidden">
+      
+      <!-- Intestazione -->
+      <div class="text-center py-6 space-y-4">
+        <h1 class="text-4xl md:text-6xl font-black text-indigo-600 tracking-tight uppercase">Tableator</h1>
+        <p class="lang-text text-xl text-gray-600 max-w-2xl mx-auto font-medium" 
+           data-it="Il sistema intelligente e modulare per la gestione dei tavoli e delle prenotazioni nel tuo ristorante." 
+           data-de="Das intelligente und modulare System für das Tisch- und Reservierungsmanagement in Ihrem Restaurant.">
+          Il sistema intelligente e modulare per la gestione dei tavoli e delle prenotazioni nel tuo ristorante.
+        </p>
+      </div>
+
+      <!-- Funzionalità -->
+      <div class="space-y-12 mt-12">
+        
+        <!-- 1. Creazione Sale e Tavoli -->
+        <div class="grid md:grid-cols-2 gap-8 items-center bg-white/60 p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition duration-300">
+          <div>
+            <h3 class="lang-text text-2xl font-bold text-gray-800 mb-4" 
+                data-it="Creazione Sale e Tavoli" 
+                data-de="Räume und Tische anlegen">Creazione Sale e Tavoli</h3>
+            <p class="lang-text text-gray-600 leading-relaxed" 
+               data-it="Riproduci fedelmente la planimetria del tuo locale. Crea diverse sale (es. interno, terrazza), posiziona liberamente i tavoli e definisci i coperti massimi. Un'interfaccia visiva chiara per avere sempre il polso della situazione in tempo reale." 
+               data-de="Geben Sie den Grundriss Ihres Restaurants originalgetreu wieder. Erstellen Sie verschiedene Räume (z. B. Innenbereich, Terrasse), platzieren Sie Tische frei und definieren Sie die maximalen Sitzplätze. Eine klare visuelle Oberfläche.">
+              Riproduci fedelmente la planimetria del tuo locale. Crea diverse sale (es. interno, terrazza), posiziona liberamente i tavoli e definisci i coperti massimi. Un'interfaccia visiva chiara per avere sempre il polso della situazione in tempo reale.
+            </p>
+          </div>
+          <div class="bg-slate-100 rounded-xl h-48 flex items-center justify-center border border-slate-200 shadow-inner relative overflow-hidden group">
+            <div class="absolute inset-0 bg-indigo-500/5 group-hover:bg-indigo-500/10 transition"></div>
+            <span class="text-indigo-800 font-bold text-lg z-10 lang-text" data-it="Mappa Interattiva 2D" data-de="Interaktive 2D-Karte">Mappa Interattiva 2D</span>
+          </div>
+        </div>
+
+        <!-- 2. Versione Base (Manuale) -->
+        <div class="grid md:grid-cols-2 gap-8 items-center bg-white/60 p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition duration-300 md:flex-row-reverse">
+          <div class="md:order-2">
+            <h3 class="lang-text text-2xl font-bold text-gray-800 mb-4" 
+                data-it="Gestione Manuale (Versione Base)" 
+                data-de="Manuelle Verwaltung (Basisversion)">Gestione Manuale (Versione Base)</h3>
+            <p class="lang-text text-gray-600 leading-relaxed" 
+               data-it="Ideale per l'accoglienza. Inserisci rapidamente le prenotazioni telefoniche o i clienti di passaggio. Assegna i tavoli liberi, aggiorna lo stato (es. 'arrivati', 'ordinato') e monitora il flusso di lavoro di tutta la serata in una dashboard intuitiva." 
+               data-de="Ideal für den Empfang. Geben Sie telefonische Reservierungen oder Laufkundschaft schnell ein. Weisen Sie freie Tische zu, aktualisieren Sie den Status und überwachen Sie den Arbeitsablauf des gesamten Abends.">
+              Ideale per l'accoglienza. Inserisci rapidamente le prenotazioni telefoniche o i clienti di passaggio. Assegna i tavoli liberi, aggiorna lo stato (es. 'arrivati', 'ordinato') e monitora il flusso di lavoro di tutta la serata in una dashboard intuitiva.
+            </p>
+          </div>
+          <div class="md:order-1 bg-green-50 rounded-xl h-48 flex items-center justify-center border border-green-200 shadow-inner relative overflow-hidden group">
+            <div class="absolute inset-0 bg-green-500/5 group-hover:bg-green-500/10 transition"></div>
+            <span class="text-green-800 font-bold text-lg z-10 lang-text" data-it="Dashboard Operativa" data-de="Operatives Dashboard">Dashboard Operativa</span>
+          </div>
+        </div>
+
+        <!-- 3. Versione Avanzata (WhatsApp) -->
+        <div class="grid md:grid-cols-2 gap-8 items-center bg-white/60 p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition duration-300">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <h3 class="lang-text text-2xl font-bold text-purple-700" 
+                  data-it="Automazione WhatsApp" 
+                  data-de="WhatsApp-Automatisierung">Automazione WhatsApp</h3>
+              <span class="bg-purple-600 text-white text-[10px] uppercase font-bold px-2 py-1 rounded-full tracking-wider">Avanzata</span>
+            </div>
+            <p class="lang-text text-gray-600 leading-relaxed" 
+               data-it="La vera rivoluzione. I clienti prenotano inviando un semplice messaggio al tuo numero WhatsApp aziendale. L'intelligenza del sistema legge la richiesta, verifica la disponibilità e inserisce automaticamente la prenotazione sul gestionale." 
+               data-de="Die wahre Revolution. Kunden buchen, indem sie eine Nachricht an Ihre WhatsApp-Nummer senden. Das System liest die Anfrage, prüft die Verfügbarkeit und trägt die Reservierung automatisch in die Software ein.">
+              La vera rivoluzione. I clienti prenotano inviando un semplice messaggio al tuo numero WhatsApp aziendale. L'intelligenza del sistema legge la richiesta, verifica la disponibilità e inserisce automaticamente la prenotazione sul gestionale.
+            </p>
+          </div>
+          <div class="bg-purple-50 rounded-xl h-48 flex items-center justify-center border border-purple-200 shadow-inner relative overflow-hidden group">
+            <div class="absolute inset-0 bg-purple-500/5 group-hover:bg-purple-500/10 transition"></div>
+            <span class="text-purple-800 font-bold text-lg z-10 lang-text" data-it="Integrazione Meta API" data-de="Meta API-Integration">Integrazione Meta API</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Call to Action / Pulsante Demo -->
+      <div class="mt-16 pt-10 border-t border-gray-200 text-center">
+        <a href="mailto:info@seron-app.com?subject=Richiesta%20Demo%20Tableator" 
+           class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-10 rounded-full shadow-xl shadow-indigo-600/30 transform hover:-translate-y-1 transition duration-300 text-xl lang-text"
+           data-it="🚀 Richiedi una Demo Gratuita" 
+           data-de="🚀 Kostenlose Demo Anfordern">
+          🚀 Richiedi una Demo Gratuita
+        </a>
+        <p class="lang-text text-sm text-gray-500 mt-4" 
+           data-it="Contattaci subito per scoprire come Tableator può semplificare il tuo lavoro." 
+           data-de="Kontaktieren Sie uns jetzt, um herauszufinden, wie Tableator Ihre Arbeit vereinfachen kann.">
+          Contattaci subito per scoprire come Tableator può semplificare il tuo lavoro.
+        </p>
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Script per gestire il cambio lingua
+  const langItBtn = document.getElementById('lang-it');
+  const langDeBtn = document.getElementById('lang-de');
+  const textElements = document.querySelectorAll('.lang-text');
+
+  function setLanguage(lang) {
+    // Aggiorna i testi
+    textElements.forEach(el => {
+      const newText = el.getAttribute(`data-${lang}`);
+      if (newText) {
+        el.innerHTML = newText;
+      }
+    });
+    
+    // Aggiorna lo stile dei pulsanti
+    if (lang === 'it') {
+      langItBtn.className = 'bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-500 transition font-bold border border-white/20';
+      langDeBtn.className = 'bg-gray-800/80 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 transition font-bold border border-white/20';
+    } else {
+      langDeBtn.className = 'bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-500 transition font-bold border border-white/20';
+      langItBtn.className = 'bg-gray-800/80 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-700 transition font-bold border border-white/20';
+    }
+  }
+
+  // Aggiungi gli event listener ai pulsanti
+  if(langItBtn) langItBtn.addEventListener('click', () => setLanguage('it'));
+  if(langDeBtn) langDeBtn.addEventListener('click', () => setLanguage('de'));
+</script>
