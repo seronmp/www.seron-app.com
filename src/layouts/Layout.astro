@@ -63,12 +63,8 @@ const { title } = Astro.props;
     <!-- Header Globale -->
     <Header />
 
-    <!-- Contenitore Principale delle Pagine -->
-    <main class="flex-grow max-w-4xl mx-auto px-4 py-16 w-full box-border">
-        <div class="bg-white/70 backdrop-blur-xl p-8 md:p-14 rounded-3xl shadow-2xl shadow-brand/10 border border-white relative z-10">
-            <slot />
-        </div>
-    </main>
+    <!-- Slot diretto senza scatole bianche esterne -->
+    <slot />
 
     <!-- Footer Globale -->
     <Footer />

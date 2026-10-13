@@ -1,9 +1,13 @@
 ---
+// Controlla la lingua in base all'URL
+const currentPath = Astro.url.pathname;
+const isGerman = currentPath.includes('-de');
 ---
 <header class="bg-white/60 backdrop-blur-lg border-b border-white/50 sticky top-0 z-50 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <div class="flex items-center gap-4">
-            <a href="/" class="hover:scale-105 transition duration-300 block">
+            <!-- Il logo riporta alla home corretta in base alla lingua -->
+            <a href={isGerman ? "/index-de" : "/"} class="hover:scale-105 transition duration-300 block">
                 <img src="/logo.png" alt="Seron Logo" class="h-12 w-auto object-contain">
             </a>
             <div class="border-l border-gray-400/30 pl-4 hidden md:block">
@@ -11,11 +15,18 @@
             </div>
         </div>
         <div class="mt-4 md:mt-0 flex items-center space-x-6">
-            <a href="/" class="text-sm font-bold text-gray-600 hover:text-brand transition flex items-center">Home</a>
+            <!-- Link Home dinamico -->
+            <a href={isGerman ? "/index-de" : "/"} class="text-sm font-bold text-gray-600 hover:text-brand transition flex items-center">
+                {isGerman ? "Startseite" : "Home"}
+            </a>
+            
+            <!-- Selettore lingua dinamico -->
             <div class="flex items-center space-x-2 text-sm font-bold bg-white/80 px-3 py-1.5 rounded border border-white/50 shadow-sm">
-                <a href="/" class="text-brand hover:text-brand transition">IT</a>
+                <!-- Se è in tedesco, IT è grigio. Altrimenti è scuro (attivo) -->
+                <a href="/" class={isGerman ? "text-gray-500 hover:text-brand transition" : "text-brand"}>IT</a>
                 <span class="text-gray-300">|</span>
-                <a href="/de.html" class="text-gray-500 hover:text-brand transition">DE</a>
+                <!-- Se è in tedesco, DE è scuro (attivo). Altrimenti è grigio -->
+                <a href="/index-de" class={isGerman ? "text-brand" : "text-gray-500 hover:text-brand transition"}>DE</a>
             </div>
         </div>
     </div>

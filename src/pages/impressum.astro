@@ -1,13 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Privacy Policy">
-    <div class="space-y-6">
-        <h1 class="text-3xl font-black text-brand uppercase">Privacy Policy</h1>
-        <p class="text-gray-700">Informativa sul trattamento dei dati personali...</p>
-        
-        <h2 class="text-xl font-bold text-brand">1. Titolare del Trattamento</h2>
-        <p class="text-gray-700">Il Titolare è Seron S.r.l. con sede a Malles Venosta...</p>
-    </div>
 
+<Layout title="Impressum - Seron S.r.l.">
+  <main class="flex-grow max-w-4xl mx-auto px-4 py-24 w-full relative z-10 text-gray-800">
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Impressum</h1>
+      <p class="text-gray-500 text-sm">Informazioni legali obbligatorie (Pflichtangaben).</p>
+    </div>
+    
+    <div class="space-y-8 text-base md:text-lg leading-relaxed text-gray-700 bg-white/60 backdrop-blur-xl p-8 md:p-12 rounded-3xl shadow-xl border border-white/80">
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Dati Aziendali</h2>
+        <p><strong>Seron S.r.l.</strong></p>
+        <p>Via Glorenza 20</p>
+        <p>39025 Malles Venosta (BZ) - Italia</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Contatti</h2>
+        <p><strong>E-Mail:</strong> info@seron-app.com</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Dati Societari</h2>
+        <p><strong>Partita IVA / Codice Fiscale:</strong> 03215630215</p>
+        <p><strong>Numero REA:</strong> BZ - 241706</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Risoluzione delle controversie (ODR)</h2>
+        <p class="text-base text-gray-600">
+          La Commissione Europea fornisce una piattaforma per la risoluzione online delle controversie (OS), accessibile al link: 
+          <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">https://ec.europa.eu/consumers/odr</a>.
+        </p>
+      </section>
+    </div>
+  </main>
 </Layout>

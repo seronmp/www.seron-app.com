@@ -2,17 +2,33 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="AGB">
-    <div class="mb-10 border-b border-gray-200/60 pb-8 text-center md:text-left">
-        <h1 class="text-4xl md:text-5xl font-black text-brand tracking-tight uppercase">AGB</h1>
-        <p class="text-gray-600 mt-4 text-lg font-medium">Allgemeine Nutzungsbedingungen für die von Seron S.r.l. angebotenen Dienste.</p>
+<Layout title="AGB - Seron S.r.l.">
+  <main class="flex-grow max-w-4xl mx-auto px-4 py-24 w-full relative z-10 text-gray-800">
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Allgemeine Geschäftsbedingungen (AGB)</h1>
+      <p class="text-gray-500 text-sm">Nutzungsbedingungen für die Softwarelösungen und Dienste von Seron S.r.l.</p>
     </div>
+    
+    <div class="space-y-8 text-base md:text-lg leading-relaxed text-gray-700 bg-white/60 backdrop-blur-xl p-8 md:p-12 rounded-3xl shadow-xl border border-white/80">
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">1. Geltungsbereich</h2>
+        <p>Der Zugriff und die Nutzung der Website von Seron S.r.l. sowie der zugehörigen Anwendungen (Salon, Tableator, Zeitlr, Akustik-Rechner) unterliegen diesen Nutzungsbedingungen.</p>
+      </section>
 
-    <div class="space-y-8 text-gray-700 leading-relaxed text-base">
-        <section>
-            <h3 class="text-xl font-bold text-brand mb-2">1. Zustimmung zu den Bedingungen</h3>
-           <p>Durch die Nutzung unserer Websites und unserer Software erklärt sich der Nutzer uneingeschränkt mit den vorliegenden Nutzungsbedingungen einverstanden.</p>
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">2. Geistiges Eigentum</h2>
+        <p>Alle Inhalte, Marken, Logos, der Quellcode und die Benutzeroberflächen dieser Website sind das ausschließliche Eigentum von Seron S.r.l. oder den jeweiligen Rechteinhabern und durch Urhebergesetze geschützt.</p>
+      </section>
 
-        </section>
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">3. Betrieb der Software</h2>
+        <p>Unsere Anwendungen dienen als Unterstützung für Unternehmensprozesse. Seron S.r.l. ist bemüht, einen reibungslosen Betrieb zu gewährleisten, übernimmt jedoch keine Haftung für temporäre Ausfälle aufgrund von Wartungsarbeiten oder höherer Gewalt.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-gray-900 mb-3">4. Gerichtsstand</h2>
+        <p>Für Streitigkeiten im Zusammenhang mit der Nutzung der Website oder der Dienste gilt ausschließlich italienisches Recht unter Ausschluss des UN-Kaufrechts. Gerichtsstand ist Bozen.</p>
+      </section>
     </div>
+  </main>
 </Layout>
