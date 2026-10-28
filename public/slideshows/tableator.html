@@ -36,6 +36,37 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--ok);outline-of
 .start button{font-size:20px;padding:.8em 1.6em}
 @media(max-width:640px){.sc{grid-template-columns:1fr;gap:2%;align-content:start;padding:4%}.sc p{display:none}.frame img{max-height:none}.sub{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.sc,.sub,.bar i{transition:none}}
+a.btn{display:inline-flex;align-items:center;font:inherit;font-size:15px;border:1px solid var(--ln);background:var(--pan);color:var(--ink);padding:.55em 1em;border-radius:6px;text-decoration:none}
+.frame{min-height:0}
+.frame img{object-fit:contain}
+@media (max-width:700px) and (orientation:portrait){
+body{padding:10px}
+.stage{aspect-ratio:auto;height:min(74svh,760px)}
+.sc{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:8px;align-content:stretch;padding:12px}
+.sc.solo{grid-template-rows:1fr;align-content:center}
+.sc h2{font-size:clamp(20px,6vw,28px);margin:0}
+.sc.solo h2{font-size:clamp(30px,9vw,44px)}
+.sc p{display:none}
+.frame{padding:3px;height:100%;max-height:none}
+.frame img{width:100%;height:100%;max-height:none}
+.sc{bottom:26%}
+.sub{left:0;right:0;bottom:0;height:26%;border-radius:0;overflow:auto;display:flex;align-items:center;justify-content:center;font-size:14px}
+}
+@media (orientation:landscape) and (max-height:520px){
+body{padding:6px 8px}
+.wrap{max-width:none}
+.stage{aspect-ratio:auto;height:calc(100svh - 110px);min-height:200px}
+.sc{grid-template-columns:30fr 70fr;gap:2%;padding:2%}
+.sc.solo{grid-template-columns:1fr}
+.sc h2{font-size:clamp(16px,3.6vw,28px)}
+.sc p{display:none}
+.frame{height:100%;padding:3px}
+.frame img{width:100%;height:100%;max-height:none}
+.sub{bottom:2%;font-size:12px;padding:.3em .6em}
+.bar{margin:6px 0}
+.note{display:none}
+button,select,a.btn{padding:.35em .8em}
+}
 </style></head><body>
 <div class="wrap">
 <div class="stage" id="stage">
@@ -45,11 +76,10 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--ok);outline-of
 <div class="bar"><i id="pg"></i></div>
 <div class="ctl">
 <div class="languages" role="group" aria-label="Sprache wählen"><button id="lang-de" type="button" aria-pressed="true">DE</button><button id="lang-it" type="button" aria-pressed="false">IT</button></div>
+<a class="btn" id="home" href="/tableator-de">🏠 Start</a>
 <button id="prev" aria-label="Zurück">⏮</button>
 <button id="pp" class="main">⏸ Pause</button>
 <button id="next" aria-label="Weiter">⏭</button>
-<label id="voice-label">Stimme <select id="voice"></select></label>
-<label id="rate-label">Tempo <select id="rate"><option value="0.9">langsam</option><option value="1" selected>normal</option><option value="1.1">schneller</option></select></label>
 <span class="cnt" id="cnt"></span>
 </div>
 <p class="note" id="note"></p>
@@ -78,13 +108,10 @@ if(s.k){const im=d.querySelector('img');im.src=IMGS[s.k];im.alt=s.t}
 stage.insertBefore(d,sub);return d});
 let cur=0,playing=false,tok=0,voices=[],timer=null;
 const synth=window.speechSynthesis;
-function pick(){voices=(synth?synth.getVoices():[]).filter(v=>new RegExp('^'+lang,'i').test(v.lang));
-const sel=document.getElementById('voice');const old=sel.value;sel.innerHTML='';
-voices.sort((a,b)=>(/google/i.test(b.name)-/google/i.test(a.name)));
-voices.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=v.name+' ('+v.lang+')';sel.appendChild(o)});
-if(!voices.length){const o=document.createElement('option');o.textContent='keine deutsche Stimme gefunden';sel.appendChild(o)}
+function pick(){const l=synth?synth.getVoices().filter(v=>new RegExp('^'+lang,'i').test(v.lang)):[];
+const g=l.find(v=>/google/i.test(v.name))||l.find(v=>/natural|neural|online/i.test(v.name))||l[0];voices=g?[g]:[];
 const n=document.getElementById('note');
-n.textContent=lang==='it'?(voices.some(v=>/google/i.test(v.name))?'È stata selezionata automaticamente la voce “Google italiano” (Chrome).':'Suggerimento: in Google Chrome è disponibile la voce “Google italiano”. Gli altri browser usano la voce italiana del sistema.'):(voices.some(v=>/google/i.test(v.name))?'Die Stimme „Google Deutsch“ wurde automatisch gewählt (Chrome).':'Tipp: In Google Chrome steht die Stimme „Google Deutsch“ zur Verfügung. Andere Browser verwenden die deutsche Systemstimme.');}
+n.textContent=lang==='it'?(/google/i.test(g&&g.name)?'':'Suggerimento: in Google Chrome è disponibile la voce “Google italiano”.'):(/google/i.test(g&&g.name)?'':'Tipp: In Google Chrome steht die Stimme „Google Deutsch“ zur Verfügung.');}
 if(synth){pick();synth.onvoiceschanged=pick}
 function show(i){cur=i;els.forEach((e,j)=>e.classList.toggle('on',j===i));
 document.getElementById('pg').style.width=((i+1)/SC.length*100)+'%';
@@ -96,9 +123,7 @@ els.forEach((el,i)=>{el.querySelector('h2').textContent=SC[i].t;el.querySelector
 document.documentElement.lang=next;document.title=next==='it'?'Tableator – Presentazione':'Tableator – Erklärvideo';
 document.getElementById('go').textContent=next==='it'?'▶ Avvia il video con audio':'▶ Video starten (mit Ton)';
 document.getElementById('prev').setAttribute('aria-label',next==='it'?'Indietro':'Zurück');document.getElementById('next').setAttribute('aria-label',next==='it'?'Avanti':'Weiter');
-document.getElementById('voice-label').firstChild.textContent=next==='it'?'Voce ':'Stimme ';
-document.getElementById('rate-label').firstChild.textContent=next==='it'?'Velocità ':'Tempo ';
-document.querySelector('#rate option[value="0.9"]').textContent=next==='it'?'lenta':'langsam';document.querySelector('#rate option[value="1"]').textContent=next==='it'?'normale':'normal';document.querySelector('#rate option[value="1.1"]').textContent=next==='it'?'veloce':'schneller';
+const home=document.getElementById('home');home.href=next==='it'?'/tableator':'/tableator-de';home.textContent=next==='it'?'🏠 Home':'🏠 Start';
 document.getElementById('lang-de').setAttribute('aria-pressed',String(next==='de'));document.getElementById('lang-it').setAttribute('aria-pressed',String(next==='it'));
 if(sub.classList.contains('on'))sub.textContent=SC[cur].n;show(cur);pick();setPP();if(wasPlaying){playing=true;setPP();speak(cur)}
 }
@@ -106,8 +131,8 @@ function speak(i){const my=++tok;clearTimeout(timer);synth&&synth.cancel();show(
 sub.textContent=SC[i].n;sub.classList.add('on');
 const next=()=>{if(my!==tok||!playing)return;if(i<SC.length-1)speak(i+1);else{playing=false;sub.classList.remove('on');setPP()}};
 if(!synth||!voices.length){timer=setTimeout(next,Math.max(5000,SC[i].n.length*70));return}
-const u=new SpeechSynthesisUtterance(SC[i].n);const v=voices[document.getElementById('voice').value];
-if(v)u.voice=v;u.lang=lang==='it'?'it-IT':'de-DE';u.rate=+document.getElementById('rate').value;
+const u=new SpeechSynthesisUtterance(SC[i].n);const v=voices[0];
+if(v)u.voice=v;u.lang=lang==='it'?'it-IT':'de-DE';u.rate=1;
 u.onend=()=>{timer=setTimeout(next,700)};u.onerror=()=>{timer=setTimeout(next,1500)};
 synth.speak(u)}
 function setPP(){document.getElementById('pp').textContent=playing?(lang==='it'?'⏸ Pausa':'⏸ Pause'):(lang==='it'?'▶ Continua':'▶ Weiter')}
@@ -115,7 +140,6 @@ document.getElementById('go').onclick=()=>{document.getElementById('start').clas
 document.getElementById('pp').onclick=()=>{if(playing){playing=false;tok++;clearTimeout(timer);synth&&synth.cancel();setPP()}else{playing=true;setPP();document.getElementById('start').classList.add('off');speak(cur)}};
 document.getElementById('prev').onclick=()=>{playing=true;setPP();speak(Math.max(0,cur-1))};
 document.getElementById('next').onclick=()=>{playing=true;setPP();speak(Math.min(SC.length-1,cur+1))};
-document.getElementById('voice').onchange=()=>{if(playing)speak(cur)};
 document.getElementById('lang-de').onclick=()=>setLanguage('de');document.getElementById('lang-it').onclick=()=>setLanguage('it');
 show(0);
 </script></body></html>
