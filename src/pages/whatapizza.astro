@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhataPizza – Pizza-Bestellungen per WhatsApp | Powered by Seron</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .brand-green { color: #2E8B46; }
+    .bg-brand-green { background-color: #2E8B46; }
+    .hover-brand-green:hover { background-color: #236e36; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <!-- Sostituisci src con il percorso reale del logo su seron-app.com -->
+        <img src="/assets/whatapizza-logo.png" alt="WhataPizza Logo" class="h-12 w-auto object-contain" onerror="this.style.display='none'" />
+        <span class="font-extrabold text-2xl tracking-tight brand-green">WhataPizza</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+        <a href="#vorteile" class="hover:text-green-700" data-de="Vorteile" data-it="Vantaggi">Vorteile</a>
+        <a href="#ablauf" class="hover:text-green-700" data-de="So funktioniert's" data-it="Come funziona">So funktioniert's</a>
+        <a href="#preise" class="hover:text-green-700" data-de="Preise" data-it="Prezzi">Preise</a>
+        <a href="#registrieren" class="hover:text-green-700" data-de="Pizzeria registrieren" data-it="Registra Pizzeria">Pizzeria registrieren</a>
+      </nav>
+
+      <!-- Language Switcher -->
+      <div class="flex items-center gap-1 bg-gray-100 p-1 rounded-lg border border-gray-200">
+        <button id="btn-de" onclick="setLang('de')" class="px-3 py-1 rounded-md text-xs font-bold bg-brand-green text-white transition">DE</button>
+        <button id="btn-it" onclick="setLang('it')" class="px-3 py-1 rounded-md text-xs font-bold text-gray-600 hover:text-gray-900 transition">IT</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-white border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 py-16 md:py-24 text-center">
+      <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-green-800 bg-green-100 rounded-full mb-4"
+            data-de="Für Pizzerien & Take-Away · Powered by Seron"
+            data-it="Per Pizzerie & Asporto · Powered by Seron">
+        Für Pizzerien & Take-Away · Powered by Seron
+      </span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6"
+          data-de="Schluss mit Telefonstress im Abendgeschäft. Bestellungen direkt per WhatsApp."
+          data-it="Basta stress al telefono nelle ore di punta. Ordini diretti su WhatsApp.">
+        Schluss mit Telefonstress im Abendgeschäft. Bestellungen direkt per WhatsApp.
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8"
+         data-de="Ihre Gäste scannen Ihren QR-Code, schreiben ihre Bestellung in einer einzigen WhatsApp-Nachricht und Sie bestätigen die Abholzeit mit nur einem Klick – ganz ohne Lieferportal-Provisionen."
+         data-it="I tuoi clienti scansionano il QR-Code, scrivono l'ordine in un unico messaggio WhatsApp e tu confermi l'orario di ritiro con un solo clic – senza commissioni dei portali di delivery.">
+        Ihre Gäste scannen Ihren QR-Code, schreiben ihre Bestellung in einer einzigen WhatsApp-Nachricht und Sie bestätigen die Abholzeit mit nur einem Klick – ganz ohne Lieferportal-Provisionen.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#registrieren" class="px-8 py-4 rounded-xl bg-brand-green hover-brand-green text-white font-bold text-lg shadow-md transition"
+           data-de="Jetzt Pizzeria anmelden"
+           data-it="Registra ora la tua Pizzeria">
+          Jetzt Pizzeria anmelden
+        </a>
+        <a href="#ablauf" class="px-8 py-4 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold text-lg transition"
+           data-de="Ablauf ansehen"
+           data-it="Scopri come funziona">
+          Ablauf ansehen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vorteile / Vantaggi -->
+  <section id="vorteile" class="max-w-6xl mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-extrabold text-gray-900"
+          data-de="Warum Pizzerien auf WhataPizza setzen"
+          data-it="Perché le pizzerie scelgono WhataPizza">
+        Warum Pizzerien auf WhataPizza setzen
+      </h2>
+      <p class="text-gray-600 mt-2"
+         data-de="Entwickelt für maximale Zeitersparnis am Ofen und an der Kasse."
+         data-it="Progettato per risparmiare tempo prezioso al forno e alla cassa.">
+        Entwickelt für maximale Zeitersparnis am Ofen und an der Kasse.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="bg-white p-7 rounded-2xl shadow-sm border border-gray-100">
+        <div class="w-12 h-12 rounded-xl bg-green-100 brand-green flex items-center justify-center text-2xl mb-4">⏱️</div>
+        <h3 class="text-xl font-bold mb-2"
+            data-de="Massive Zeitersparnis"
+            data-it="Enorme risparmio di tempo">
+          Massive Zeitersparnis
+        </h3>
+        <p class="text-gray-600 text-sm leading-relaxed"
+           data-de="Kein ständiges Telefonklingeln, kein mühsames Mitschreiben auf Zetteln und keine Missverständnisse bei Sonderwünschen. Alle Bestellungen erscheinen sauber strukturiert auf Ihrem Tablet oder Bondrucker."
+           data-it="Niente più telefono che squilla di continuo, niente appunti presi di fretta e zero malintesi sulle aggiunte. Tutti gli ordini arrivano chiari e ordinati sul tuo tablet o sulla stampante termica.">
+          Kein ständiges Telefonklingeln, kein mühsames Mitschreiben auf Zetteln und keine Missverständnisse bei Sonderwünschen. Alle Bestellungen erscheinen sauber strukturiert auf Ihrem Tablet oder Bondrucker.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white p-7 rounded-2xl shadow-sm border border-gray-100">
+        <div class="w-12 h-12 rounded-xl bg-green-100 brand-green flex items-center justify-center text-2xl mb-4">📲</div>
+        <h3 class="text-xl font-bold mb-2"
+            data-de="Keine App & keine Registrierung für Gäste"
+            data-it="Nessuna App o registrazione per i clienti">
+          Keine App & keine Registrierung für Gäste
+        </h3>
+        <p class="text-gray-600 text-sm leading-relaxed"
+           data-de="Jeder Gast hat bereits WhatsApp. QR-Code scannen, Pizzen + FERTIG/FINE + Name schreiben, absenden. Keine Passwörter, keine Hürden – sofortige Umstellung Ihrer Stammkunden."
+           data-it="Tutti hanno già WhatsApp. Scansionano il QR-Code, scrivono le pizze + FINE + nome e inviano. Nessuna password, nessun ostacolo: i clienti abituali passano subito a WhatsApp.">
+          Jeder Gast hat bereits WhatsApp. QR-Code scannen, Pizzen + FERTIG/FINE + Name schreiben, absenden. Keine Passwörter, keine Hürden – sofortige Umstellung Ihrer Stammkunden.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white p-7 rounded-2xl shadow-sm border border-gray-100">
+        <div class="w-12 h-12 rounded-xl bg-green-100 brand-green flex items-center justify-center text-2xl mb-4">🎁</div>
+        <h3 class="text-xl font-bold mb-2"
+            data-de="Stempelkarte & Stammkunden-Bindung"
+            data-it="Carta fedeltà & fidelizzazione clienti">
+          Stempelkarte & Stammkunden-Bindung
+        </h3>
+        <p class="text-gray-600 text-sm leading-relaxed"
+           data-de="Belohnen Sie WhatsApp-Besteller automatisch (z. B. 10 Pizzen = 1 Gratis-Pizza) und holen Sie Stammkunden an ruhigen Abenden DSGVO-konform per Reminder zurück."
+           data-it="Premia automaticamente chi ordina su WhatsApp (es. 10 pizze = 1 pizza omaggio) e richiama i clienti abituali nelle serate più tranquille con promemoria conformi al GDPR.">
+          Belohnen Sie WhatsApp-Besteller automatisch (z. B. 10 Pizzen = 1 Gratis-Pizza) und holen Sie Stammkunden an ruhigen Abenden DSGVO-konform per Reminder zurück.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- So registrieren sich Pizzerien -->
+  <section id="ablauf" class="bg-white border-y border-gray-100 py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-gray-900"
+            data-de="In 3 einfachen Schritten startklar"
+            data-it="Pronti a partire in 3 semplici passaggi">
+          In 3 einfachen Schritten startklar
+        </h2>
+        <p class="text-gray-600 mt-2"
+           data-de="Wir richten alles schlüsselfertig für Ihre Pizzeria ein."
+           data-it="Prepariamo tutto chiavi in mano per la tua pizzeria.">
+          Wir richten alles schlüsselfertig für Ihre Pizzeria ein.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="relative p-6 rounded-2xl bg-gray-50 border border-gray-200">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand-green text-white font-bold mb-4">1</span>
+          <h3 class="font-bold text-lg mb-2"
+              data-de="Anmelden & Speisekarte senden"
+              data-it="Registrati e invia il menù">
+            Anmelden & Speisekarte senden
+          </h3>
+          <p class="text-sm text-gray-600"
+             data-de="Füllen Sie das Formular unten aus und schicken Sie uns Ihre Speisekarte sowie Öffnungszeiten. Wir legen Ihren persönlichen Bestell-Hashtag (z. B. #ihrepizzeria) an."
+             data-it="Compila il modulo qui sotto e inviaci il tuo menù e gli orari di apertura. Creiamo subito il tuo hashtag dedicato (es. #latuapizzeria).">
+            Füllen Sie das Formular unten aus und schicken Sie uns Ihre Speisekarte sowie Öffnungszeiten. Wir legen Ihren persönlichen Bestell-Hashtag (z. B. #ihrepizzeria) an.
+          </p>
+        </div>
+
+        <div class="relative p-6 rounded-2xl bg-gray-50 border border-gray-200">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand-green text-white font-bold mb-4">2</span>
+          <h3 class="font-bold text-lg mb-2"
+              data-de="QR-Code & Flyer erhalten"
+              data-it="Ricevi QR-Code e volantini">
+            QR-Code & Flyer erhalten
+          </h3>
+          <p class="text-sm text-gray-600"
+             data-de="Sie erhalten Ihren druckfertigen QR-Code sowie auf Wunsch fertig gestaltete Theken-Flyer und Stempelkarten für Ihre Pizzakartons."
+             data-it="Ricevi il tuo QR-Code pronto per la stampa e, su richiesta, volantini da banco e tessere fedeltà personalizzate per i cartoni delle pizze.">
+            Sie erhalten Ihren druckfertigen QR-Code sowie auf Wunsch fertig gestaltete Theken-Flyer und Stempelkarten für Ihre Pizzakartons.
+          </p>
+        </div>
+
+        <div class="relative p-6 rounded-2xl bg-gray-50 border border-gray-200">
+          <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand-green text-white font-bold mb-4">3</span>
+          <h3 class="font-bold text-lg mb-2"
+              data-de="Bestellungen per Klick bestätigen"
+              data-it="Conferma gli ordini con un clic">
+            Bestellungen per Klick bestätigen
+          </h3>
+          <p class="text-sm text-gray-600"
+             data-de="Öffnen Sie das WhataPizza-Dashboard auf Ihrem Tablet oder PC. Neue WhatsApp-Bestellungen erscheinen sofort – Sie tippen nur die Abholzeit an."
+             data-it="Apri la dashboard WhataPizza sul tuo tablet o PC. I nuovi ordini WhatsApp appaiono all'istante: ti basta selezionare l'orario di ritiro.">
+            Öffnen Sie das WhataPizza-Dashboard auf Ihrem Tablet oder PC. Neue WhatsApp-Bestellungen erscheinen sofort – Sie tippen nur die Abholzeit an.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preise / Prezzi -->
+  <section id="preise" class="max-w-5xl mx-auto px-4 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-extrabold text-gray-900"
+          data-de="Transparente Preise ohne Umsatzbeteiligung"
+          data-it="Prezzi trasparenti senza percentuali sull'incasso">
+        Transparente Preise ohne Umsatzbeteiligung
+      </h2>
+      <p class="text-gray-600 mt-2"
+         data-de="Keine 15–30 % Provision wie bei Lieferportalen. Sie zahlen nur bei echten Bestellungen."
+         data-it="Niente commissioni del 15–30% come sui portali di delivery. Paghi solo sugli ordini reali.">
+        Keine 15–30 % Provision wie bei Lieferportalen. Sie zahlen nur bei echten Bestellungen.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 items-stretch">
+      <!-- Basis-Modell -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm border-2 border-green-600 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider brand-green"
+                data-de="Standard-Tarif"
+                data-it="Tariffa Standard">
+            Standard-Tarif
+          </span>
+          <h3 class="text-2xl font-extrabold mt-1 mb-4"
+              data-de="0 € Grundgebühr · 10 Cent / Pizza"
+              data-it="0 € Canone fisso · 10 Cent / Pizza">
+            0 € Grundgebühr · 10 Cent / Pizza
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-700 mb-6">
+            <li data-de="✓ Einmalige Einrichtung: 99 € (inkl. QR-Code & Startpaket Flyer)"
+                data-it="✓ Attivazione una tantum: 99 € (incl. QR-Code e pacchetto iniziale volantini)">
+              ✓ Einmalige Einrichtung: 99 € (inkl. QR-Code & Startpaket Flyer)
+            </li>
+            <li data-de="✓ 0 € Fixkosten – bei 0 WhatsApp-Bestellungen zahlen Sie 0 €"
+                data-it="✓ 0 € costi fissi – con 0 ordini WhatsApp paghi 0 €">
+              ✓ 0 € Fixkosten – bei 0 WhatsApp-Bestellungen zahlen Sie 0 €
+            </li>
+            <li data-de="✓ Fair-Use-Kostendeckel: Maximal 149 € / Monat (danach kostenlos)"
+                data-it="✓ Tetto massimo garantito: Massimo 149 € / mese (oltre è gratuito)">
+              ✓ Fair-Use-Kostendeckel: Maximal 149 € / Monat (danach kostenlos)
+            </li>
+            <li data-de="✓ Monatlich kündbar ohne Mindestlaufzeit"
+                data-it="✓ Disdicibile mensilmente senza vincoli">
+              ✓ Monatlich kündbar ohne Mindestlaufzeit
+            </li>
+          </ul>
+        </div>
+        <a href="#registrieren" class="block text-center w-full py-3 rounded-xl bg-brand-green hover-brand-green text-white font-bold transition"
+           data-de="Unverbindlich anfragen"
+           data-it="Richiedi attivazione">
+          Unverbindlich anfragen
+        </a>
+      </div>
+
+      <!-- Optionales Upgrade -->
+      <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-gray-500"
+                data-de="Optionales Zusatzmodul"
+                data-it="Modulo aggiuntivo opzionale">
+            Optionales Zusatzmodul
+          </span>
+          <h3 class="text-2xl font-extrabold mt-1 mb-4"
+              data-de="Digitale Stempelkarte & Reminder (+19 €/Monat)"
+              data-it="Carta Fedeltà Digitale & Reminder (+19 €/mese)">
+            Digitale Stempelkarte & Reminder (+19 €/Monat)
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-700 mb-6">
+            <li data-de="✓ Automatischer Punktezähler pro Handynummer (z. B. 10+1 Gratis)"
+                data-it="✓ Contatore punti automatico per numero di telefono (es. 10+1 Omaggio)">
+              ✓ Automatischer Punktezähler pro Handynummer (z. B. 10+1 Gratis)
+            </li>
+            <li data-de="✓ Automatische Status-Info in jeder Bestellbestätigung"
+                data-it="✓ Aggiornamento punti automatico in ogni conferma d'ordine">
+              ✓ Automatische Status-Info in jeder Bestellbestätigung
+            </li>
+            <li data-de="✓ DSGVO-konformes WhatsApp-Opt-in & Abmeldefunktion (STOP)"
+                data-it="✓ Opt-in WhatsApp conforme al GDPR e disiscrizione (STOP)">
+              ✓ DSGVO-konformes WhatsApp-Opt-in & Abmeldefunktion (STOP)
+            </li>
+            <li data-de="✓ Aktive Stammkunden-Reminder an ruhigen Abenden"
+                data-it="✓ Promemoria attivi ai clienti abituali nelle serate tranquille">
+              ✓ Aktive Stammkunden-Reminder an ruhigen Abenden
+            </li>
+          </ul>
+        </div>
+        <p class="text-xs text-gray-500"
+           data-de="Jederzeit im Pizzeria-Dashboard aktivierbar oder deaktivierbar."
+           data-it="Attivabile o disattivabile in qualsiasi momento dalla dashboard.">
+          Jederzeit im Pizzeria-Dashboard aktivierbar oder deaktivierbar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registrierungsformular -->
+  <section id="registrieren" class="bg-green-900 text-white py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-extrabold"
+            data-de="Pizzeria kostenlos & unverbindlich anmelden"
+            data-it="Registra la tua Pizzeria senza impegno">
+          Pizzeria kostenlos & unverbindlich anmelden
+        </h2>
+        <p class="text-green-100 mt-2"
+           data-de="Wir melden uns innerhalb von 24 Stunden mit Ihrem persönlichen Demo-Link und QR-Code."
+           data-it="Ti ricontattiamo entro 24 ore con il tuo link demo personale e il QR-Code.">
+          Wir melden uns innerhalb von 24 Stunden mit Ihrem persönlichen Demo-Link und QR-Code.
+        </p>
+      </div>
+
+      <form onsubmit="handleRegister(event)" class="bg-white text-gray-800 p-8 rounded-2xl shadow-lg space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-gray-600 mb-1"
+                   data-de="Name der Pizzeria *"
+                   data-it="Nome della Pizzeria *">Name der Pizzeria *</label>
+            <input type="text" id="pizzeriaName" required placeholder="z. B. Pizzeria Fantasy"
+                   class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-green-600" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-gray-600 mb-1"
+                   data-de="Ort / Gemeinde *"
+                   data-it="Località / Comune *">Ort / Gemeinde *</label>
+            <input type="text" id="pizzeriaCity" required placeholder="z. B. Schlanders / Silandro"
+                   class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-green-600" />
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-gray-600 mb-1"
+                   data-de="Ansprechpartner *"
+                   data-it="Referente *">Ansprechpartner *</label>
+            <input type="text" id="contactName" required
+                   class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-green-600" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-gray-600 mb-1"
+                   data-de="Telefon / WhatsApp *"
+                   data-it="Telefono / WhatsApp *">Telefon / WhatsApp *</label>
+            <input type="tel" id="contactPhone" required placeholder="+39 ..."
+                   class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-green-600" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-gray-600 mb-1"
+                 data-de="E-Mail-Adresse *"
+                 data-it="Indirizzo E-Mail *">E-Mail-Adresse *</label>
+          <input type="email" id="contactEmail" required
+                 class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-green-600" />
+        </div>
+
+        <div class="flex items-start gap-2 pt-2">
+          <input type="checkbox" id="privacyCheck" required class="mt-1" />
+          <label for="privacyCheck" class="text-xs text-gray-600"
+                 data-de="Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und Einrichtung eines unverbindlichen Testzugangs durch Seron S.r.l. verarbeitet werden."
+                 data-it="Acconsento al trattamento dei miei dati da parte di Seron S.r.l. per essere ricontattato e attivare una demo senza impegno.">
+            Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und Einrichtung eines unverbindlichen Testzugangs durch Seron S.r.l. verarbeitet werden.
+          </label>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-green hover-brand-green text-white font-bold text-lg shadow transition"
+                data-de="Jetzt unverbindlich anmelden"
+                data-it="Invia richiesta di registrazione">
+          Jetzt unverbindlich anmelden
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 text-xs py-8">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>© 2026 WhataPizza · Powered by <strong>Seron S.r.l.</strong> – Mals / Malles Venosta (BZ)</div>
+      <div class="flex gap-4">
+        <a href="https://www.seron-app.com" class="hover:text-white">seron-app.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let currentLang = 'de';
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-de]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+
+      const btnDe = document.getElementById('btn-de');
+      const btnIt = document.getElementById('btn-it');
+      if (lang === 'de') {
+        btnDe.className = 'px-3 py-1 rounded-md text-xs font-bold bg-brand-green text-white transition';
+        btnIt.className = 'px-3 py-1 rounded-md text-xs font-bold text-gray-600 hover:text-gray-900 transition';
+      } else {
+        btnIt.className = 'px-3 py-1 rounded-md text-xs font-bold bg-brand-green text-white transition';
+        btnDe.className = 'px-3 py-1 rounded-md text-xs font-bold text-gray-600 hover:text-gray-900 transition';
+      }
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const pizzeria = document.getElementById('pizzeriaName').value;
+      const city = document.getElementById('pizzeriaCity').value;
+      const contact = document.getElementById('contactName').value;
+      const phone = document.getElementById('contactPhone').value;
+      const email = document.getElementById('contactEmail').value;
+
+      const subject = encodeURIComponent(`WhataPizza Registrierung: ${pizzeria} (${city})`);
+      const body = encodeURIComponent(
+        `Pizzeria: ${pizzeria}\nOrt/Comune: ${city}\nAnsprechpartner: ${contact}\nTelefon/WhatsApp: ${phone}\nE-Mail: ${email}`
+      );
+      window.location.href = `mailto:info@seron.one?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
