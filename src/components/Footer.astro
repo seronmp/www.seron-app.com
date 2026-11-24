@@ -2,7 +2,7 @@
 // Controlla il percorso attuale della pagina
 const currentPath = Astro.url.pathname;
 // Se il percorso contiene "-de", attiva la modalità in tedesco
-const isGerman = currentPath.includes('-de');
+const isGerman = currentPath.includes('-de') || (currentPath === '/whatapizza' && Astro.url.searchParams.get('lang') !== 'it');
 ---
 
 <footer class="bg-brand pt-12 pb-8 text-center text-gray-300 relative z-10 mt-auto shadow-[0_-1px_3px_rgba(0,0,0,0.05)]">

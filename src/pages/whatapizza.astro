@@ -1,78 +1,161 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WhataPizza – Pizza-Bestellungen per WhatsApp | Powered by Seron</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-    .brand-green { color: #2E8B46; }
-    .bg-brand-green { background-color: #2E8B46; }
-    .hover-brand-green:hover { background-color: #236e36; }
+---
+import Layout from '../layouts/Layout.astro';
+
+const currentLanguage = Astro.url.searchParams.get('lang') === 'it' ? 'it' : 'de';
+---
+<Layout title="WhataPizza" lang={currentLanguage}>
+  <style is:global>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    :root {
+      --ink: #17251c;
+      --muted: #5e6f63;
+      --green: #23824b;
+      --green-dark: #12643a;
+      --green-pale: #eaf5ed;
+      --paper: #ffffff;
+      --line: #e2ece5;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3, button, input { font-family: inherit; }
+    .brand-green { color: var(--green); }
+    .bg-brand-green { background-color: var(--green); }
+    .hover-brand-green:hover { background-color: var(--green-dark); }
+
+    .site-header { background: rgba(255,255,255,.97); border-bottom: 1px solid var(--line); box-shadow: 0 3px 14px rgba(23,37,28,.035); backdrop-filter: blur(12px); }
+    .site-header-inner { max-width: 1200px; min-height: 82px; flex-wrap: wrap; gap: 0 24px; }
+    .brand-lockup { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-logo { display: block; width: 174px; height: 66px; object-fit: cover; object-position: center; }
+    .brand-byline { border-left: 1px solid var(--line); padding-left: 12px; color: var(--muted); font-size: 10px; font-weight: 700; line-height: 1.4; letter-spacing: 0; text-transform: uppercase; }
+    .site-nav { display: flex; flex: 1; align-items: center; justify-content: center; gap: 22px; color: var(--muted); font-size: 13px; font-weight: 600; }
+    .site-nav a:hover { color: var(--green); }
+    .language-switcher { border: 1px solid var(--line); border-radius: 6px; background: #f5faf6; }
+    .language-switcher button { border-radius: 4px; }
+
+    .hero { overflow: hidden; border-bottom: 1px solid var(--line); background: #fff; }
+    .wp-page { max-width: 1024px; margin: 0 auto; padding: 40px 16px 64px; }
+    .wp-panel { overflow: hidden; border: 1px solid rgba(25,128,75,.14); border-radius: 24px; background: rgba(255,255,255,.92); box-shadow: 0 24px 70px rgba(59,32,75,.10); }
+    .hero-inner { display: block; max-width: 900px; margin: 0 auto; padding: 54px 24px 46px; text-align: center; }
+    .hero-copy { text-align: center; }
+    .wp-logo { display: block; width: min(230px, 70vw); height: 110px; margin: 0 auto 20px; object-fit: contain; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 22px; color: var(--green); font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .hero-eyebrow::before { width: 8px; height: 8px; border-radius: 50%; background: var(--green); content: ''; }
+    .hero h1 { max-width: 720px; margin: 0 auto 18px; color: var(--green-dark); font-size: 44px; font-weight: 800; line-height: 1.12; letter-spacing: 0; }
+    .hero-copy > p { max-width: 680px; margin: 0 auto 26px; color: var(--muted); font-size: 17px; line-height: 1.7; }
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .hero-actions a { border-radius: 5px; box-shadow: none; font-size: 15px; }
+    .hero-primary { background: var(--green); color: white; }
+    .hero-primary:hover { background: var(--green-dark); }
+    .hero-secondary { border: 1px solid #d6e5da; background: white; color: var(--ink); }
+    .hero-secondary:hover { background: #f1f8f3; }
+    .hero-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; max-width: 620px; margin: 32px auto 0; padding-top: 19px; border-top: 1px solid var(--line); }
+    .hero-facts div { color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .hero-facts strong { display: block; margin-bottom: 3px; color: var(--ink); font-size: 16px; }
+    .hero-visual { position: relative; min-width: 0; max-width: 850px; margin: 34px auto 0; }
+    .hero-screen { overflow: hidden; border: 1px solid #e1ece4; border-radius: 8px; background: #f4faf5; box-shadow: 0 18px 42px rgba(23,80,46,.12); }
+    .hero-screen img { display: block; width: 100%; height: auto; }
+    .screen-caption { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 12px 5px 0; color: var(--muted); font-size: 12px; font-weight: 600; }
+    .screen-caption span:last-child { display: inline-flex; align-items: center; gap: 7px; color: var(--green); }
+    .screen-caption span:last-child::before { width: 7px; height: 7px; border-radius: 50%; background: #49a66b; content: ''; }
+
+    #vorteile h2, #ablauf h2, #preise h2, #registrieren h2 { color: var(--green-dark); font-size: 32px; font-weight: 800; line-height: 1.2; letter-spacing: 0; }
+    #vorteile > div:first-child p, #ablauf > div > div:first-child p, #preise > div:first-child p { color: var(--muted); }
+    #vorteile > div:last-child > div { border-color: var(--line); border-radius: 16px; box-shadow: 0 5px 18px rgba(23,80,46,.045); text-align: center; }
+    #vorteile > div:last-child > div > div:first-child { border-radius: 6px; background: var(--green-pale); color: var(--green); }
+    #ablauf .grid > div { border-color: var(--line); border-radius: 16px; background: #f7fbf8; text-align: center; }
+    #preise .grid > div { border-radius: 16px; box-shadow: 0 8px 26px rgba(23,80,46,.05); text-align: center; }
+    #preise .grid > div:first-child { border-color: var(--green); }
+    #registrieren { background: transparent; color: var(--ink); }
+    #registrieren form { border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 8px 26px rgba(23,80,46,.07); text-align: left; }
+    #registrieren input { border-radius: 4px; }
+    #registrieren button { border-radius: 5px; }
+    .wp-section { border-top: 1px solid var(--line); }
+    .wp-section > div:first-child { margin-bottom: 32px; }
+    .wp-section .grid { gap: 20px; }
+    .wp-section .grid > div, .wp-section .grid > a { transition: transform .2s ease, box-shadow .2s ease; }
+    .wp-section .grid > div:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(23,80,46,.10); }
+    .wp-section nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .wp-section-nav a { border: 1px solid #cfe3d4; border-radius: 999px; padding: 8px 14px; color: var(--green-dark); font-size: 13px; font-weight: 700; }
+    .wp-section-nav a:hover { background: var(--green-pale); }
+
+    @media (max-width: 900px) {
+      .site-nav { gap: 12px; font-size: 12px; }
+      .hero h1 { font-size: 40px; }
+    }
+    @media (max-width: 720px) {
+      .site-header-inner { padding-top: 8px; padding-bottom: 8px; }
+      .brand-logo { width: 142px; height: 56px; }
+      .brand-byline { display: none; }
+      .site-nav { order: 3; flex-basis: 100%; justify-content: flex-start; overflow-x: auto; padding: 9px 0 3px; white-space: nowrap; }
+      .site-nav a { flex: 0 0 auto; }
+      .wp-page { padding: 24px 12px 40px; }
+      .wp-panel { border-radius: 18px; }
+      .hero-inner { padding: 38px 18px 34px; }
+      .hero h1 { font-size: 34px; }
+      .hero-copy > p { font-size: 16px; }
+      .hero-screen { border-width: 1px; }
+      .hero-facts { gap: 8px; }
+      .hero-facts strong { font-size: 14px; }
+      #vorteile h2, #ablauf h2, #preise h2, #registrieren h2 { font-size: 29px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
   </style>
-</head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
-
-  <!-- Navbar -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
-        <!-- Sostituisci src con il percorso reale del logo su seron-app.com -->
-        <img src="/assets/whatapizza-logo.png" alt="WhataPizza Logo" class="h-12 w-auto object-contain" onerror="this.style.display='none'" />
-        <span class="font-extrabold text-2xl tracking-tight brand-green">WhataPizza</span>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
-        <a href="#vorteile" class="hover:text-green-700" data-de="Vorteile" data-it="Vantaggi">Vorteile</a>
-        <a href="#ablauf" class="hover:text-green-700" data-de="So funktioniert's" data-it="Come funziona">So funktioniert's</a>
-        <a href="#preise" class="hover:text-green-700" data-de="Preise" data-it="Prezzi">Preise</a>
-        <a href="#registrieren" class="hover:text-green-700" data-de="Pizzeria registrieren" data-it="Registra Pizzeria">Pizzeria registrieren</a>
-      </nav>
-
-      <!-- Language Switcher -->
-      <div class="flex items-center gap-1 bg-gray-100 p-1 rounded-lg border border-gray-200">
-        <button id="btn-de" onclick="setLang('de')" class="px-3 py-1 rounded-md text-xs font-bold bg-brand-green text-white transition">DE</button>
-        <button id="btn-it" onclick="setLang('it')" class="px-3 py-1 rounded-md text-xs font-bold text-gray-600 hover:text-gray-900 transition">IT</button>
-      </div>
-    </div>
-  </header>
-
+  <main class="wp-page">
+    <div class="wp-panel">
   <!-- Hero Section -->
-  <section class="bg-white border-b border-gray-100">
-    <div class="max-w-5xl mx-auto px-4 py-16 md:py-24 text-center">
-      <span class="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-green-800 bg-green-100 rounded-full mb-4"
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-copy">
+      <img src="/WhataPizza_logo.png" alt="WhataPizza" class="wp-logo" />
+      <span class="hero-eyebrow"
             data-de="Für Pizzerien & Take-Away · Powered by Seron"
             data-it="Per Pizzerie & Asporto · Powered by Seron">
         Für Pizzerien & Take-Away · Powered by Seron
       </span>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-6"
-          data-de="Schluss mit Telefonstress im Abendgeschäft. Bestellungen direkt per WhatsApp."
-          data-it="Basta stress al telefono nelle ore di punta. Ordini diretti su WhatsApp.">
-        Schluss mit Telefonstress im Abendgeschäft. Bestellungen direkt per WhatsApp.
+      <h1 data-de="Mehr Bestellungen. Weniger Telefonstress."
+          data-it="Più ordini. Meno stress al telefono.">
+        Mehr Bestellungen. Weniger Telefonstress.
       </h1>
-      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8"
+      <p
          data-de="Ihre Gäste scannen Ihren QR-Code, schreiben ihre Bestellung in einer einzigen WhatsApp-Nachricht und Sie bestätigen die Abholzeit mit nur einem Klick – ganz ohne Lieferportal-Provisionen."
          data-it="I tuoi clienti scansionano il QR-Code, scrivono l'ordine in un unico messaggio WhatsApp e tu confermi l'orario di ritiro con un solo clic – senza commissioni dei portali di delivery.">
         Ihre Gäste scannen Ihren QR-Code, schreiben ihre Bestellung in einer einzigen WhatsApp-Nachricht und Sie bestätigen die Abholzeit mit nur einem Klick – ganz ohne Lieferportal-Provisionen.
       </p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="#registrieren" class="px-8 py-4 rounded-xl bg-brand-green hover-brand-green text-white font-bold text-lg shadow-md transition"
+      <div class="hero-actions">
+        <a href="#registrieren" class="hero-primary px-7 py-3.5 font-bold transition"
            data-de="Jetzt Pizzeria anmelden"
            data-it="Registra ora la tua Pizzeria">
           Jetzt Pizzeria anmelden
         </a>
-        <a href="#ablauf" class="px-8 py-4 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold text-lg transition"
+        <a href="#ablauf" class="hero-secondary px-7 py-3.5 font-semibold transition"
            data-de="Ablauf ansehen"
            data-it="Scopri come funziona">
           Ablauf ansehen
         </a>
       </div>
+      <div class="hero-facts">
+        <div><strong>0 €</strong><span data-de="Grundgebühr" data-it="Canone fisso">Grundgebühr</span></div>
+        <div><strong>10 ct</strong><span data-de="pro Pizza" data-it="per pizza">pro Pizza</span></div>
+        <div><strong>1 Klick</strong><span data-de="zur Abholbestätigung" data-it="per confermare il ritiro">zur Abholbestätigung</span></div>
+      </div>
+      </div>
+      <div class="hero-visual">
+        <figure class="hero-screen">
+          <img src="/slideshows/tableator-images/whatspizza-overview.png" alt="WhataPizza-Dashboard mit WhatsApp-Nachrichten und Bestellübersicht" />
+        </figure>
+        <div class="screen-caption">
+          <span data-de="Bestellungen und Chats an einem Ort" data-it="Ordini e chat in un unico posto">Bestellungen und Chats an einem Ort</span>
+          <span data-de="Live-Übersicht" data-it="In tempo reale">Live-Übersicht</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Vorteile / Vantaggi -->
-  <section id="vorteile" class="max-w-6xl mx-auto px-4 py-16">
+  <section id="vorteile" class="wp-section max-w-6xl mx-auto px-4 py-16">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-extrabold text-gray-900"
           data-de="Warum Pizzerien auf WhataPizza setzen"
@@ -135,7 +218,7 @@
   </section>
 
   <!-- So registrieren sich Pizzerien -->
-  <section id="ablauf" class="bg-white border-y border-gray-100 py-16">
+  <section id="ablauf" class="wp-section bg-white border-y border-gray-100 py-16">
     <div class="max-w-5xl mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-extrabold text-gray-900"
@@ -197,7 +280,7 @@
   </section>
 
   <!-- Preise / Prezzi -->
-  <section id="preise" class="max-w-5xl mx-auto px-4 py-16">
+  <section id="preise" class="wp-section max-w-5xl mx-auto px-4 py-16">
     <div class="text-center mb-12">
       <h2 class="text-3xl font-extrabold text-gray-900"
           data-de="Transparente Preise ohne Umsatzbeteiligung"
@@ -293,7 +376,7 @@
   </section>
 
   <!-- Registrierungsformular -->
-  <section id="registrieren" class="bg-green-900 text-white py-16">
+  <section id="registrieren" class="wp-section py-16">
     <div class="max-w-3xl mx-auto px-4">
       <div class="text-center mb-8">
         <h2 class="text-3xl font-extrabold"
@@ -314,7 +397,7 @@
             <label class="block text-xs font-bold uppercase text-gray-600 mb-1"
                    data-de="Name der Pizzeria *"
                    data-it="Nome della Pizzeria *">Name der Pizzeria *</label>
-            <input type="text" id="pizzeriaName" required placeholder="z. B. Pizzeria Fantasy"
+            <input type="text" id="pizzeriaName" required placeholder="z. B. Pizzeria Tomato"
                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-green-600" />
           </div>
           <div>
@@ -369,37 +452,14 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 text-xs py-8">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div>© 2026 WhataPizza · Powered by <strong>Seron S.r.l.</strong> – Mals / Malles Venosta (BZ)</div>
-      <div class="flex gap-4">
-        <a href="https://www.seron-app.com" class="hover:text-white">seron-app.com</a>
-      </div>
     </div>
-  </footer>
-
-  <script>
-    let currentLang = 'de';
-
-    function setLang(lang) {
-      currentLang = lang;
-      document.documentElement.lang = lang;
-
-      document.querySelectorAll('[data-de]').forEach(el => {
-        el.textContent = el.getAttribute('data-' + lang);
-      });
-
-      const btnDe = document.getElementById('btn-de');
-      const btnIt = document.getElementById('btn-it');
-      if (lang === 'de') {
-        btnDe.className = 'px-3 py-1 rounded-md text-xs font-bold bg-brand-green text-white transition';
-        btnIt.className = 'px-3 py-1 rounded-md text-xs font-bold text-gray-600 hover:text-gray-900 transition';
-      } else {
-        btnIt.className = 'px-3 py-1 rounded-md text-xs font-bold bg-brand-green text-white transition';
-        btnDe.className = 'px-3 py-1 rounded-md text-xs font-bold text-gray-600 hover:text-gray-900 transition';
-      }
-    }
+  </main>
+  <script is:inline>
+    const language = new URLSearchParams(window.location.search).get('lang') === 'it' ? 'it' : 'de';
+    document.documentElement.lang = language;
+    document.querySelectorAll('[data-de]').forEach(element => {
+      element.textContent = element.getAttribute('data-' + language);
+    });
 
     function handleRegister(e) {
       e.preventDefault();
@@ -416,5 +476,4 @@
       window.location.href = `mailto:info@seron.one?subject=${subject}&body=${body}`;
     }
   </script>
-</body>
-</html>
+</Layout>
